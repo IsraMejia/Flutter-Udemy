@@ -7,7 +7,7 @@ class CardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Salu2Internautas'),
+        title: Text('Cards'),
       ),
 
       body: ListView(
@@ -15,6 +15,16 @@ class CardPage extends StatelessWidget {
         padding: EdgeInsets.all(15.0) , //Separa el contenido del List en todos sus bordes con sus limites lateres 20
 
         children: <Widget>[
+          _cardTipo1(),
+          SizedBox(height: 30.0), //Espacio de 30 entre las tarjetas
+          _cardTipo2(),
+          SizedBox(height: 30.0), //Espacio de 30 entre las tarjetas
+          _cardTipo1(),
+          SizedBox(height: 30.0), //Espacio de 30 entre las tarjetas
+          _cardTipo2(),
+          _cardTipo1(),
+          SizedBox(height: 30.0), //Espacio de 30 entre las tarjetas
+          _cardTipo2(),
           _cardTipo1(),
           SizedBox(height: 30.0), //Espacio de 30 entre las tarjetas
           _cardTipo2()
@@ -25,6 +35,8 @@ class CardPage extends StatelessWidget {
 
   Widget _cardTipo1(){
     return Card(//Widget card de la lib material
+    elevation: 5.0,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)   ),
       child: Column(
         children: <Widget>[
 
@@ -63,9 +75,9 @@ class CardPage extends StatelessWidget {
 
   Widget _cardTipo2(){
     
-    return Card(
-      
-      color: Colors.amberAccent,
+    final card =  Container(
+      // clipBehavior: Clip.antiAlias,
+      // shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30) ) ),
       child: Column(
         children : <Widget>[
           // Image(
@@ -77,15 +89,39 @@ class CardPage extends StatelessWidget {
             placeholder: AssetImage('assets/jar-loading.gif'),
             fadeInDuration: Duration( milliseconds: 200 ),
             height: 300.0,
-            fit: BoxFit.cover
+            fit: BoxFit.cover //Recortar centrado
           ),
           
           Container(
             padding: EdgeInsets.all(5.2),
-            child: Text('BlackPanther super pesado')
+            child: Text('BlackPanther archivo super pesado')
           )
         ],
       ),
+    );//final card
+
+    return Container(
+      
+      decoration: BoxDecoration( 
+        color: Colors.blue[100],
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40) ),
+        // color: Colors.red
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color : Colors.deepPurple[100],
+            blurRadius: 5.0, //Lo pone borroso xD
+            spreadRadius: 2.0, //alarga el difuminado xD
+            offset: Offset(10, 10) //Mueve el difuminado
+          )
+        ]
+      ),
+      child: ClipRRect(
+        child: card, 
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40) ),
+
+        
+      ),//Recorta todo lo quede fuera del contenedor
+
     );
 
   }//_cardTipo2
