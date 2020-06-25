@@ -15,7 +15,9 @@ class CardPage extends StatelessWidget {
         padding: EdgeInsets.all(15.0) , //Separa el contenido del List en todos sus bordes con sus limites lateres 20
 
         children: <Widget>[
-          _cardTipo1()
+          _cardTipo1(),
+          SizedBox(height: 30.0), //Espacio de 30 entre las tarjetas
+          _cardTipo2()
         ],
       ),
     );
@@ -41,7 +43,6 @@ class CardPage extends StatelessWidget {
                 onPressed: (){
 
                 },
-
                 child: Text("Cancelar"),
               ),
 
@@ -49,7 +50,6 @@ class CardPage extends StatelessWidget {
                 onPressed: (){
 
                 },
-
                 child: Text("Aceptar"),
               ),
 
@@ -59,8 +59,36 @@ class CardPage extends StatelessWidget {
         ],
         ),
     );
-  }
+  }//_cardTipo1
 
+  Widget _cardTipo2(){
+    
+    return Card(
+      
+      color: Colors.amberAccent,
+      child: Column(
+        children : <Widget>[
+          // Image(
+          //   image: NetworkImage('https://images4.alphacoders.com/900/thumb-1920-900361.jpg'),
+          // ),
+
+          FadeInImage(
+            image: NetworkImage('https://images4.alphacoders.com/900/thumb-1920-900361.jpg'),
+            placeholder: AssetImage('assets/jar-loading.gif'),
+            fadeInDuration: Duration( milliseconds: 200 ),
+            height: 300.0,
+            fit: BoxFit.cover
+          ),
+          
+          Container(
+            padding: EdgeInsets.all(5.2),
+            child: Text('BlackPanther super pesado')
+          )
+        ],
+      ),
+    );
+
+  }//_cardTipo2
 
 
 }//class CardPage
