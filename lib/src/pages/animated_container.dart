@@ -30,7 +30,8 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
           duration: Duration( milliseconds : 270 ) , 
           //Escencial para que el AnimatedContainer funcione
 
-          curve: Curves.fastOutSlowIn,
+          curve: Curves.fastOutSlowIn, //Aceleraciones (+, -) dentro de la animacion
+          //hay muchas en la documentacion para escoger
 
           width: _width,
           height: _height,
