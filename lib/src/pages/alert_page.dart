@@ -42,6 +42,10 @@ class AlertPage extends StatelessWidget {
       builder: (context) {
        
         return AlertDialog(
+
+          shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20.0) ) ,
+          // borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40) ),
+          // El broder radius no es parametro del AlertDialog 
           
           backgroundColor: Colors.lightBlue[50],
           title: Text('Salu2xd'),
@@ -50,8 +54,10 @@ class AlertPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             //Ahora el tamaño del Column sera el minimo para embolver contenido
             children: <Widget>[
-              Text('Contenido xddddddddd'),
-              FlutterLogo( size : 100.0 , colors: Colors.green )
+              Text('Contenido xdddddddddasdasda Contenido xdddddddddContenido xddddddddd Contenido xddddddddd'),
+              FlutterLogo( size : 100.0 , colors: Colors.green ),
+
+              
             ],
           ),
 
