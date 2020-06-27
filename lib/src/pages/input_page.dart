@@ -13,6 +13,9 @@ class _InputPageState extends State<InputPage> {
   String _direccion ='' ;
   String _email ='';
   String _password='';
+  String _fecha = '';
+
+  TextEditingController _inputFieldDateController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +35,8 @@ class _InputPageState extends State<InputPage> {
           Divider(),
           _ingresaPassword(),
           Divider(),
+          _crearFecha( context ),
+          Divider(),
 
           _revisarDatos(),
           
@@ -42,6 +47,7 @@ class _InputPageState extends State<InputPage> {
     );
 
   }//build
+
 
   Widget _crearInput() {
     return TextField(
@@ -99,9 +105,8 @@ class _InputPageState extends State<InputPage> {
 
   Widget _ingresaPassword(){
     return TextField(
-
-      keyboardType: TextInputType.emailAddress ,
-      //Te pone el arroba en el teclado xD
+      
+      obscureText: true,
       
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -120,7 +125,53 @@ class _InputPageState extends State<InputPage> {
       }
 
     );
+  }// _ingresaPassword()
+
+  Widget _crearFecha(BuildContext context){
+    return TextField(
+      enableInteractiveSelection: false, //No deja copiar y pegar
+
+      controller: _inputFieldDateController,
+      //Se relaciona el controlador del _selectDate con el controller de aqui
+
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.only( topLeft : Radius.circular(30)) ,
+        ) ,
+        counter: Text('letras ${_fecha.length } '),
+        labelText: 'Fecha de Nacimiento',
+        icon: Icon(Icons.date_range , size: 30.0 )
+      ),
+
+      onTap: (){
+        FocusScope.of(context).requestFocus(new FocusNode()); //No es visible eltap
+        _selectDate(context);
+      },
+
+    );
   }
+
+  _selectDate(BuildContext context) async {
+
+    DateTime piked =  await showDatePicker(
+      context  : context,
+      initialDate: new DateTime.now(),
+      firstDate: new DateTime(2019),
+      lastDate:  new DateTime(2025),
+      
+    ); //Se define el rango del calendario
+
+    if (piked != null){
+      setState(() {
+        _fecha = piked.toString() ;
+        _inputFieldDateController.text = _fecha;
+      });//Si se pico xd, se le asigna la fecha del calendario al string
+    }else{
+
+    }
+
+
+  }//Se usa un async await ya que se definira la fecha en tiempo de ejecucion
 
 
   Widget _revisarDatos(){
