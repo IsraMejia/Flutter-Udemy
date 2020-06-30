@@ -30,6 +30,11 @@
             "ruta" : "Slider",
             "icon" : "slider", 
             "texto": "Sliders"
+        },
+        {
+            "ruta" : "Listas",
+            "icon" : "Lista", 
+            "texto": "Listas"
         }
     ]
 }

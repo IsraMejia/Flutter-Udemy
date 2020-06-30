@@ -30,8 +30,12 @@ class _SliderPageState extends State<SliderPage> {
             Text('Desliza para ver a BlackPanther' ,
             style: TextStyle( fontSize: 20.0, color: Colors.deepPurple[900] )  
             ),
-
-            _crearSlider(),
+            
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: _crearSlider(),
+            ),
+            
 
             _crearCheckBox(),
 
@@ -70,20 +74,20 @@ class _SliderPageState extends State<SliderPage> {
 
   String _prioridad (double valor) {
     String valorDePrioridad='';
-    switch (valor) {
-          case 0.0:
+    switch (valor.toInt() ) {
+          case 0:
             valorDePrioridad = 'Invisible';
           break;
 
-          case 10.0:
+          case 10:
             valorDePrioridad = 'Visible';
           break;
 
-          case 20.0:
+          case 20:
             valorDePrioridad = 'Mediano';
           break;
 
-          case 30.0:
+          case 30:
             valorDePrioridad = 'Grande';
           break;
 

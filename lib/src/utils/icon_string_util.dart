@@ -11,7 +11,8 @@ final _icons = <String , IconData> {
   'folder_open'   : Icons.folder_open,
   'donut_large'   : Icons.donut_large,
   'input'         : Icons.input ,
-  'slider'        : Icons.subtitles,
+  'slider'        : Icons.linear_scale ,
+  'Lista'        : Icons.featured_play_list ,
   //Para escribir con mutiples cursores se mantiene alt u option mientras que se seleccionan
 };
 
