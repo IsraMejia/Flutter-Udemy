@@ -55,7 +55,7 @@ class AlertPage extends StatelessWidget {
             //Ahora el tamaño del Column sera el minimo para embolver contenido
             children: <Widget>[
               Text('Contenido xdddddddddasdasda Contenido xdddddddddContenido xddddddddd Contenido xddddddddd'),
-              FlutterLogo( size : 100.0 , colors: Colors.green ),
+              FlutterLogo( size : 100.0 ),
 
               
             ],
