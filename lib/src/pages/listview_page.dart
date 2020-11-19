@@ -58,19 +58,33 @@ class _ListaPageState extends State<ListaPage> {
   }//build 
 
   Widget _crearLista(){
-    return ListView.builder(
-        controller: _scrollController,
-        itemCount: _listaNumeros.length, //Numero de items actuales
-        itemBuilder: ( BuildContext context , int index){
-          final imagen =_listaNumeros[index];
-          return FadeInImage(
-            placeholder: AssetImage('assets/jar-loading.gif') , 
-            image: NetworkImage('https://picsum.photos/500/300/?image=$imagen'),
-          );
-        } ,
-        
-      ); 
+    return RefreshIndicator( //Este widget hace lo de jalar hacia abajo y refrescar pantalla
+      onRefresh: obtenerpagina1 ,//Se manda la referencia al metodo de tipo Future, no se ejecuta
+      child: ListView.builder(
+          controller: _scrollController,
+          itemCount: _listaNumeros.length, //Numero de items actuales
+          itemBuilder: ( BuildContext context , int index){
+            final imagen =_listaNumeros[index];
+            return FadeInImage(
+              placeholder: AssetImage('assets/jar-loading.gif') , 
+              image: NetworkImage('https://picsum.photos/500/300/?image=$imagen'),
+            );
+          } ,
+          
+        ),
+    ); 
       //fin ListView.builder(
+  }
+
+  Future <Null> obtenerpagina1() async{
+    final duration = new Duration(seconds: 2);
+    new Timer(duration, (){
+      _listaNumeros.clear();
+      _ultimoItem ++;
+      _agergar10imagenes(); //Dentro de aqui se actualiza el setstate
+    });
+
+    return Future.delayed(duration); //tarda 2 segundos para simular la carga
   }
 
   Widget _crearLoading(){
@@ -124,3 +138,5 @@ class _ListaPageState extends State<ListaPage> {
 
 
 }//_ListaPageState State<ListaPage>
+
+//Me quede en pull to refres
